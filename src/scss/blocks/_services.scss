@@ -135,8 +135,11 @@
         &--primary {
             padding: 0 54px 0 52px;
             color: #fff;
-            grid-column: span 6;
             background: linear-gradient(180deg, #12235f 29%, #172b70 65%, #122360 90%);
+
+            @media (min-width: 1200px) {
+                grid-column: span 6;
+            }
 
             @media (max-width: 1200px) {
                 padding: 24px 0 57px 24px;
@@ -194,7 +197,10 @@
         &--secondary {
             padding: 52px;
             padding-right: 0;
-            grid-column: span 3;
+
+            @media (min-width: 1200px) {
+                grid-column: span 3;
+            }
 
             @media (max-width: 1200px) {
                 padding: 24px 0 57px 24px;
@@ -251,7 +257,7 @@
         }
 
         &--image {
-            padding: 0;
+            padding: 0 !important;
             background: linear-gradient(180deg, #12235f 29%, #172b70 65%, #122360 90%);
 
             @media (max-width: 767px) {
@@ -332,7 +338,7 @@
             transform: rotate(-7.2deg) translate(0, -11%);
         }
 
-        @media(max-width: 767px){
+        @media (max-width: 767px) {
             top: calc(100% + 24px);
         }
     }
