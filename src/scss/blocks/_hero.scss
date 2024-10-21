@@ -1,0 +1,160 @@
+.hero {
+    padding: 207px 0 58px;
+    background: linear-gradient(0, #e3e3e3 0%, #f0f0f0 43%, #fafafa 62%, #f3f3f3 84%, #e3e3e3 100%);
+
+    @media (max-width: 1650px) {
+        padding: 207px 0 79px;
+    }
+
+    @media (max-width: 1200px) {
+        padding-top: 162px;
+        padding-bottom: 90px;
+    }
+
+    @media (max-width: 767px) {
+        padding-top: 148px;
+        padding-bottom: 40px;
+    }
+
+    &__body {
+        margin-right: -151px;
+        display: flex;
+
+        @media (max-width: 1650px) {
+            margin-right: -25px;
+        }
+
+        @media (max-width: 1200px) {
+            margin-right: 0;
+            flex-direction: column;
+            gap: 92px;
+        }
+
+        @media (max-width: 767px) {
+            gap: 66px;
+        }
+    }
+
+    &__content {
+        padding-top: 65px;
+        margin-right: -116px;
+        flex: 1;
+
+        @media (max-width: 1650px) {
+            margin-right: -156px;
+        }
+
+        @media (max-width: 1200px) {
+            padding-top: 0;
+            margin-right: 0;
+        }
+    }
+
+    &__title {
+    }
+
+    &__text {
+        margin-bottom: 48px;
+        max-width: 391px;
+        font-size: 24px;
+        line-height: 128%;
+
+        @media (max-width: 992px) {
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 767px) {
+            margin-bottom: 24px;
+            font-size: 20px;
+            line-height: 128%;
+        }
+    }
+
+    &__button {
+    }
+
+    &__scene {
+        flex: none;
+        width: 57%;
+        aspect-ratio: 852/685;
+        position: relative;
+        z-index: 1;
+
+        @media (max-width: 1650px) {
+            margin-top: 74px;
+            width: 53.47%;
+        }
+
+        @media (max-width: 1200px) {
+            margin-top: 0;
+            width: 90%;
+            align-self: center;
+        }
+
+        @media (max-width: 576px) {
+            width: 95%;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            bottom: 4%;
+            left: 0;
+            transform: translateX(-25%);
+            width: 100%;
+            aspect-ratio: 872/213;
+            background: #000;
+            filter: blur(40px);
+            border-radius: 50%;
+            opacity: 16%;
+            z-index: -1;
+        }
+    }
+
+    &__ship {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 51.9%;
+        aspect-ratio: 443/369;
+        z-index: 3;
+
+        & img {
+            animation: levitateShip 20s ease-in-out 0s infinite;
+            object-fit: contain;
+        }
+    }
+
+    &__planet {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-48%, 1.8%);
+        width: 62.4%;
+        aspect-ratio: 1/1;
+        z-index: 2;
+
+        @media (max-width: 1650px) {
+            transform: translate(-48%, 1.8%) rotate(-23deg);
+        }
+
+        & img {
+            animation: levitatePlanet 20s ease-in-out 0s infinite;
+            object-fit: contain;
+        }
+    }
+
+    &__plane {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 38.61%;
+        aspect-ratio: 330/176;
+        z-index: 1;
+
+        & img {
+            animation: levitatePlane 20s ease-in-out 0s infinite;
+            object-fit: contain;
+        }
+    }
+}

@@ -1,0 +1,23 @@
+.menu-footer {
+    &__item {
+        &:not(:last-child) {
+            margin-bottom: 19px;
+
+            @media(max-width: 767px){
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+    &__link {
+        display: block;
+        width: fit-content;
+        line-height: toProcent(16, 19);
+        transition: all 0.3s ease-in-out 0s;
+
+        &:hover {
+            color: $colorAction;
+            text-decoration: underline;
+        }
+    }
+}

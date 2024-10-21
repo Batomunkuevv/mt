@@ -1,0 +1,35 @@
+@keyframes levitatePlanet {
+    0% {
+        transform: rotate(-23deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-23deg);
+    }
+}
+
+@keyframes levitatePlane {
+    0% {
+        transform: rotate(-15deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-15deg);
+    }
+}
+
+@keyframes levitateShip {
+    0% {
+        transform: rotate(15deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(15deg);
+    }
+}

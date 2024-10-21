@@ -1,0 +1,76 @@
+.faqs {
+    &__title {
+    }
+
+    &__list {
+        margin-bottom: 80px;
+
+        @media (max-width: 992px) {
+            margin-bottom: 32px;
+        }
+
+        @media (max-width: 767px) {
+            margin-bottom: 68px;
+        }
+    }
+
+    &__item {
+        &:not(:last-child) {
+            margin-bottom: 24px;
+        }
+    }
+
+    &__more {
+        padding: 52px;
+        background: $colorMain;
+        border-radius: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 80px;
+
+        @media (max-width: 992px) {
+            padding: 24px;
+            gap: 24px;
+        }
+
+        @media (max-width: 767px) {
+            align-items: stretch;
+            flex-direction: column;
+        }
+
+        &-title {
+            max-width: 710px;
+            font-size: 26px;
+            line-height: 128%;
+            font-weight: 700;
+            color: #fff;
+
+            @media (max-width: 992px) {
+                max-width: 328px;
+                font-size: 24px;
+                line-height: toProcent(24, 29);
+            }
+
+            @media (max-width: 767px) {
+                max-width: unset;
+                font-size: 20px;
+                line-height: 128%;
+            }
+        }
+
+        &-button {
+            flex: none;
+
+            @media (max-width: 992px) {
+                padding: 12px 24px;
+                min-width: 204px;
+                height: 48px;
+            }
+
+            @media (max-width: 359px) {
+                width: 100%;
+            }
+        }
+    }
+}

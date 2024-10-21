@@ -1,0 +1,132 @@
+.site-footer {
+    padding: 80px 0;
+    background: $colorBgGray;
+
+    @media (max-width: 767px) {
+        padding: 60px 0;
+    }
+
+    &__wrapper {
+        padding-right: 151px;
+
+        @media (max-width: 1200px) {
+            padding-right: 71px;
+        }
+
+        @media (max-width: 767px) {
+            padding: 0;
+        }
+    }
+
+    &__body {
+        padding-right: 47px;
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 120px;
+
+        @media (max-width: 1200px) {
+            margin-bottom: 32px;
+        }
+
+        @media (max-width: 992px) {
+            margin-bottom: 60px;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 60px;
+        }
+
+        @media (max-width: 767px) {
+            padding: 0;
+            gap: 41px;
+        }
+
+        @media (max-width: 576px) {
+            margin-bottom: 61px;
+        }
+    }
+
+    &__logo {
+        width: 108px;
+        aspect-ratio: 108/60;
+
+        @media (max-width: 767px) {
+            width: 84px;
+        }
+
+        & img {
+            border-radius: 0;
+        }
+    }
+
+    &__navigation {
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+        gap: 64px;
+        max-width: 576px;
+
+        @media (max-width: 1200px) {
+            max-width: 520px;
+        }
+
+        @media (max-width: 992px) {
+            max-width: unset;
+            gap: 48px;
+        }
+
+        @media (max-width: 576px) {
+            flex-direction: column;
+            gap: 40px;
+        }
+    }
+
+    &__menu {
+    }
+
+    &__terms {
+        &-item {
+            &:not(:last-child) {
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+    &__term {
+        display: block;
+        width: fit-content;
+        text-decoration: underline;
+        transition: all 0.3s ease-in-out 0s;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    &__bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap-reverse;
+        column-gap: 48px;
+        row-gap: 20px;
+
+        @media (min-width: 767px) {
+            padding-right: 13px;
+        }
+
+        @media (min-width: 1200px) {
+            margin-top: -20px;
+        }
+    }
+
+    &__copyright {
+        margin: 0;
+    }
+
+    &__creator {
+        & a {
+            font-weight: 500;
+        }
+    }
+}

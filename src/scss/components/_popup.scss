@@ -1,0 +1,83 @@
+.popup {
+    margin: auto 0;
+    padding: 52px;
+    width: calc(100% - 32px);
+    max-width: 888px;
+    background: #fff;
+    border-radius: 32px;
+    position: relative;
+
+    @media (max-width: 992px) {
+        padding: 80px 24px 52px;
+    }
+
+    &:not(.is-visible) {
+        display: none;
+    }
+
+    &--faqs {
+        @media (min-width: 992px) {
+            padding-top: 108px;
+        }
+    }
+
+    &__close {
+        position: absolute;
+        top: 52px;
+        right: 52px;
+        width: 32px;
+        aspect-ratio: 1/1;
+
+        @media (max-width: 992px) {
+            top: 24px;
+            right: 24px;
+        }
+
+        &:hover {
+            &::before,
+            &::after {
+                background: $colorAction;
+            }
+        }
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 125%;
+            height: 4px;
+            background: $colorFont;
+            transform: translate(-50%, -50%) rotate(45deg);
+            transition: all 0.3s ease-in-out 0s;
+        }
+
+        &::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+    }
+
+    &__title {
+        margin-bottom: 32px;
+        font-size: 40px;
+        line-height: toProcent(40, 48);
+
+        @media (min-width: 992px) {
+            margin-right: 84px;
+        }
+
+        @media (max-width: 992px) {
+            margin-bottom: 24px;
+            font-size: 24px;
+            line-height: toProcent(24, 29);
+        }
+    }
+
+    &__content {
+        @media (min-width: 992px) {
+            font-size: 20px;
+            line-height: 130%;
+        }
+    }
+}

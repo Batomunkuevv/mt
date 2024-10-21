@@ -1,0 +1,279 @@
+html,
+body {
+    font-family: $fontFamily;
+    font-size: 16px;
+    line-height: 120%;
+    font-weight: 400;
+    color: $colorFont;
+    -webkit-font-smoothing: antialiased;
+    scrollbar-gutter: stable;
+
+    @supports not selector(::-webkit-scrollbar) {
+        scrollbar-width: thin;
+        scrollbar-color: $colorMain #fff;
+    }
+
+    &::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: 0 0;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $colorMain;
+        border-radius: 32px;
+        border: 1px solid #fff;
+    }
+
+    & *::selection {
+        background: $colorMain;
+        color: #fff;
+    }
+}
+
+body {
+    &.is-lock {
+        overflow: hidden;
+    }
+}
+
+* {
+    & br {
+        @media (max-width: 1432px) {
+            display: none;
+        }
+    }
+}
+
+section {
+    margin: 180px 0;
+
+    @media (max-width: 992px) {
+        margin: 120px 0;
+    }
+
+    @media (max-width: 767px) {
+        margin: 100px 0;
+    }
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-weight: 700;
+    color: $colorMain;
+
+    & span {
+        color: $colorFont;
+    }
+}
+
+h1 {
+    margin-bottom: 16px;
+    font-size: 64px;
+    line-height: 110%;
+
+    @media (max-width: 992px) {
+        margin-bottom: 20px;
+        font-size: 56px;
+        line-height: 110%;
+    }
+
+    @media (max-width: 767px) {
+        margin-bottom: 16px;
+        font-size: 27px;
+        line-height: 110%;
+    }
+
+    & span {
+        color: $colorMain;
+    }
+}
+
+h2 {
+    margin-bottom: 80px;
+    font-size: 68px;
+    line-height: 110%;
+
+    @media (max-width: 992px) {
+        margin-bottom: 60px;
+        font-size: 50px;
+        line-height: 110%;
+    }
+
+    @media (max-width: 767px) {
+        margin-bottom: 40px;
+        font-size: 36px;
+        line-height: 110%;
+    }
+}
+
+h3 {
+    margin-bottom: 32px;
+    font-size: 64px;
+    line-height: 110%;
+
+    @media (max-width: 992px) {
+        font-size: 56px;
+        line-height: 110%;
+    }
+
+    @media (max-width: 767px) {
+        font-size: 27px;
+        line-height: 110%;
+    }
+}
+
+h4 {
+    margin-bottom: 24px;
+    font-size: 26px;
+    line-height: 120%;
+
+    @media (max-width: 992px) {
+        font-size: 24px;
+        line-height: toProcent(24, 29);
+    }
+}
+
+p {
+    @media (max-width: 992px) {
+        line-height: 125%;
+    }
+
+    @media (max-width: 576px) {
+        line-height: toProcent(16, 19);
+    }
+
+    &:has(+ p) {
+        margin-bottom: 12px;
+    }
+}
+
+ol,
+ul {
+    @media (max-width: 992px) {
+        line-height: 125%;
+    }
+
+    @media (max-width: 576px) {
+        line-height: toProcent(16, 19);
+    }
+
+    &:not([class]) {
+        margin: 12px 0;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+ul {
+    &:not([class]) {
+        & li {
+            padding-left: 24px;
+            position: relative;
+
+            &:not(:last-child) {
+                margin-bottom: 12px;
+            }
+
+            &::before {
+                content: "●";
+                position: absolute;
+                top: 0;
+                left: 8.9px;
+                font-size: 10px;
+            }
+        }
+    }
+}
+
+ol {
+    &:not([class]) {
+        & li {
+            padding-left: 14px;
+            position: relative;
+            counter-increment: item;
+
+            &:not(:last-child) {
+                margin-bottom: 12px;
+            }
+
+            &::before {
+                content: counter(item) ".";
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+        }
+    }
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    pointer-events: none;
+
+    &::selection {
+        background: unset;
+    }
+}
+
+svg {
+    max-width: 100%;
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+a {
+    color: inherit;
+    transition: all 0.3s ease-in-out 0s;
+
+    &:not([class]) {
+        display: inline-block;
+        color: $colorMain;
+        text-decoration: underline;
+
+        &:hover {
+            text-decoration: none;
+            color: $colorAction;
+        }
+    }
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}

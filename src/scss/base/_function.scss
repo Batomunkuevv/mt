@@ -1,0 +1,16 @@
+@function getExitFromContainer($width) {
+    $result: calc((-100vw + $width) / 2);
+
+    @return $result;
+}
+
+@function getPaddingWithoutContainer($width) {
+    $result: calc((100vw - $width) / 2);
+
+    @return $result;
+}
+
+@function toProcent($fz, $lh) {
+    $result: math.round(math.div($lh, $fz) * 100%);
+    @return $result;
+}

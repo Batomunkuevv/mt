@@ -1,0 +1,38 @@
+.clients {
+    &__title {
+    }
+
+    &__wrapper {
+        background: $colorBgGray;
+
+        @media (max-width: 992px) {
+            padding: 10px 0;
+        }
+    }
+
+    &__slider {
+        overflow: visible !important;
+        pointer-events: none;
+
+        &-wrapper {
+            transition-timing-function: linear !important;
+        }
+
+        &-slide {
+            width: 432px !important;
+            aspect-ratio: 1/1;
+            height: unset;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            @media (max-width: 992px) {
+                width: 200px !important;
+            }
+
+            & img {
+                object-fit: contain;
+            }
+        }
+    }
+}

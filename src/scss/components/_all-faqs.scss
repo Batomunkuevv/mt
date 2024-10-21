@@ -1,0 +1,106 @@
+.all-faqs {
+    &__block {
+        &:not(:last-child) {
+            margin-bottom: 51px;
+
+            @media (max-width: 992px) {
+                margin-bottom: 60px;
+            }
+
+            @media (max-width: 767px) {
+                margin-bottom: 48px;
+            }
+        }
+
+        &-title {
+            margin-bottom: 24px;
+            font-size: 40px;
+            line-height: toProcent(40, 48);
+
+            @media (max-width: 992px) {
+                font-size: 24px;
+                line-height: toProcent(24, 29);
+            }
+        }
+    }
+
+    &__list {
+    }
+
+    &__item {
+        &:not(:last-child) {
+            margin-bottom: 24px;
+        }
+
+        &-button {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 48px;
+            cursor: pointer;
+
+            @media (max-width: 992px) {
+                gap: 40px;
+            }
+
+            @media (max-width: 767px) {
+                align-items: start;
+                gap: 20px;
+            }
+
+            &.is-active {
+                & .all-faqs__item-arrow {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+
+        &-question {
+            margin: 0;
+            max-width: 632px;
+            font-size: 20px;
+            line-height: 120%;
+            font-weight: 500;
+
+            @media (max-width: 992px) {
+                font-size: 16px;
+                line-height: toProcent(16, 19);
+            }
+        }
+
+        &-arrow {
+            transition: all 0.3s ease-in-out 0s;
+        }
+
+        &-wrapper {
+            height: 0;
+            will-change: height;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out 0s;
+        }
+
+        &-answer {
+            max-width: 641px;
+            margin-top: 24px;
+            padding-left: 24px;
+            border-left: 1px solid $colorMain;
+
+            & p {
+                &:has(+ p) {
+                    @media (min-width: 992px) {
+                        margin-bottom: 20px;
+                    }
+                }
+            }
+
+            & ul,
+            & ol {
+                &:not([class]) {
+                    @media (min-width: 992px) {
+                        margin-bottom: 20px;
+                    }
+                }
+            }
+        }
+    }
+}

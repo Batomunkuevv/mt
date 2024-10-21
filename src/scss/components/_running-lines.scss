@@ -1,0 +1,34 @@
+.running-lines {
+    &__row {
+        pointer-events: none;
+        overflow: visible !important;
+
+        &:not(:last-child) {
+            margin-bottom: 48px;
+
+            @media (max-width: 992px) {
+                margin-bottom: 24px;
+            }
+        }
+    }
+
+    &__wrapper {
+        transition-timing-function: linear !important;
+    }
+
+    &__word {
+        width: auto !important;
+        font-size: 156px;
+        line-height: 110%;
+        font-weight: 700;
+        color: #fbfbfb;
+
+        @media (max-width: 992px) {
+            font-size: 100px;
+        }
+
+        @media (max-width: 767px) {
+            font-size: 80px;
+        }
+    }
+}

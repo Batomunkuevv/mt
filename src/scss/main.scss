@@ -1,0 +1,48 @@
+@use "sass:math";
+
+//*<Base>=======================================================================================================
+
+@import "base/fonts";
+@import "base/function";
+@import "base/animation";
+@import "base/variables";
+@import "base/mixins";
+@import "base/reset";
+@import "base/common";
+@import "base/main-grid";
+
+//*</Base>=====================================================================================================
+
+//*<Components>================================================================================================
+
+@import "components/button";
+@import "components/menu";
+@import "components/menu-footer";
+@import "components/burger";
+@import "components/arrow";
+@import "components/swiper";
+@import "components/case-card";
+@import "components/overlay";
+@import "components/popup";
+@import "components/faq";
+@import "components/all-faqs";
+@import "components/advantage";
+@import "components/running-lines";
+@import "components/site-header";
+@import "components/site-footer";
+
+//*</Components>=================================================================================================
+
+//*<Blocks>=================================================================================================
+
+@import "blocks/hero";
+@import "blocks/services";
+@import "blocks/advantages";
+@import "blocks/cases";
+@import "blocks/referral";
+@import "blocks/faqs";
+@import "blocks/clients";
+@import "blocks/contacts";
+@import "blocks/cta";
+
+//*</Blocks>=================================================================================================

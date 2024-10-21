@@ -1,0 +1,142 @@
+.cta {
+    @media (min-width: 1200px) {
+        margin: 180px 0 0;
+    }
+
+    @media (min-width: 1650px) {
+        margin: 360px 0 66px;
+    }
+
+    @media(max-width: 767px){
+        margin-top: 150px;
+    }
+
+    &__body {
+        margin-right: -108px;
+        display: flex;
+        align-items: start;
+
+        @media (max-width: 1650px) {
+            margin-right: 0;
+        }
+
+        @media (max-width: 1200px) {
+            flex-direction: column-reverse;
+            gap: 90px;
+        }
+
+        @media (max-width: 767px) {
+            gap: 60px;
+        }
+    }
+
+    &__content {
+        margin-right: -66px;
+        flex: 1;
+
+        @media (max-width: 1200px) {
+            padding-top: 0;
+            margin-right: 0;
+        }
+    }
+
+    &__title {
+        margin-bottom: 80px;
+
+        @media (max-width: 1200px) {
+            margin-bottom: 48px;
+            max-width: 90%;
+        }
+
+        @media(max-width: 767px){
+            margin-bottom: 40px;
+            max-width: unset;
+        }
+    }
+
+    &__button {
+    }
+
+    &__scene {
+        margin-top: -30px;
+        flex: none;
+        width: 50.75%;
+        aspect-ratio: 852/685;
+        position: relative;
+        z-index: 1;
+
+        @media (max-width: 1650px) {
+            margin-top: 44px;
+            width: 46.47%;
+        }
+
+        @media (max-width: 1200px) {
+            margin-top: 0;
+            width: 90%;
+            align-self: center;
+        }
+
+        @media (max-width: 576px) {
+            width: 95%;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transform: translateX(-25%);
+            width: 100%;
+            aspect-ratio: 872/213;
+            background: #000;
+            filter: blur(40px);
+            border-radius: 50%;
+            opacity: 16%;
+            z-index: -1;
+        }
+    }
+
+    &__ship {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 51.9%;
+        aspect-ratio: 443/369;
+        z-index: 3;
+
+        & img {
+            object-fit: contain;
+        }
+    }
+
+    &__planet {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-48%, 1.8%) rotate(-23deg);
+        width: 62.4%;
+        aspect-ratio: 1/1;
+        z-index: 2;
+
+        @media (max-width: 1650px) {
+            transform: translate(-48%, 1.8%) rotate(-23deg);
+        }
+
+        & img {
+            object-fit: contain;
+        }
+    }
+
+    &__plane {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 38.61%;
+        aspect-ratio: 330/176;
+        z-index: 1;
+
+        & img {
+            object-fit: contain;
+        }
+    }
+}

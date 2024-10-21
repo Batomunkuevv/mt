@@ -1,0 +1,18 @@
+.swiper {
+    --swiper-pagination-bullet-size: 12px;
+    --swiper-pagination-bullet-inactive-color: #f4f4f4;
+    --swiper-pagination-bullet-inactive-opacity: 1;
+    --swiper-theme-color: #15286d;
+
+    &-pagination {
+        position: static;
+        margin-top: 38px;
+        height: 12px;
+        display: flex;
+        justify-content: center;
+
+        & .swiper-pagination-bullet {
+            transition: all 0.3s ease-in-out 0s;
+        }
+    }
+}

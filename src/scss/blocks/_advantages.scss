@@ -1,0 +1,115 @@
+.advantages {
+    &__top {
+        margin-bottom: 80px;
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 64px;
+
+        @media (max-height: 750px) {
+            margin-bottom: 48px;
+        }
+
+        @media (max-width: 1200px) {
+            margin-bottom: 64px;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        @media (max-width: 767px) {
+            margin-bottom: 40px;
+            gap: 20px;
+        }
+    }
+
+    &__title {
+        margin: 0;
+        max-width: 490px;
+    }
+
+    &__text {
+        max-width: 620px;
+        font-size: 24px;
+        line-height: 128%;
+
+        @media (min-width: 1200px) {
+            margin-right: 40px;
+        }
+
+        @media (max-width: 767px) {
+            font-size: 20px;
+            line-height: 129%;
+            color: $colorMain;
+        }
+
+        & p {
+            line-height: inherit;
+        }
+
+        & h3 {
+            margin: 31px 0;
+            font-size: 26px;
+            line-height: 128%;
+
+            @media (max-width: 992px) {
+                margin: 29px 0;
+                font-size: 24px;
+                line-height: 124%;
+            }
+
+            @media (max-width: 767px) {
+                margin: 26px 0;
+                font-size: 20px;
+                line-height: 128%;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    &__body {
+        overflow: visible !important;
+    }
+
+    &__wrapper {
+        @media (min-width: 767px) {
+            display: block;
+        }
+    }
+
+    &__item {
+        @media (max-width: 767px) {
+            height: unset !important;
+        }
+
+        &:not(:last-child) {
+            @media (max-width: 1200px) and (min-width: 767px) {
+                margin-bottom: 24px;
+            }
+        }
+
+        &:not(:first-child) {
+            @media (min-width: 1200px) {
+                position: absolute;
+                width: 100%;
+            }
+        }
+
+        &:nth-child(even) {
+            & .advantage {
+                @media (max-width: 1200px) and (min-width: 767px) {
+                    flex-direction: row-reverse;
+                    padding: 0 48px 0 24px;
+                }
+            }
+        }
+    }
+
+    &__pagination {
+        @media (min-width: 767px) {
+            display: none;
+        }
+    }
+}
