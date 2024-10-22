@@ -1,6 +1,7 @@
 "use strict";
 
 let MAX_MEDIA_1200 = window.matchMedia('(max-width: 1200px)').matches;
+const IS_OPERA = (navigator.userAgent.match(/Opera|OPR\//) ? true : false);
 
 const initLozad = () => {
     const lozadElements = document.querySelectorAll('[data-lozad]');
@@ -53,7 +54,8 @@ const initHeader = () => {
     let lastScrollTop;
 
     window.addEventListener('scroll', toggleScrollingClass);
-    window.addEventListener('scroll', animateHeader);
+
+    if (!IS_OPERA) window.addEventListener('scroll', animateHeader);
 
     function animateHeader() {
         const scrollTop = document.documentElement.scrollTop;
