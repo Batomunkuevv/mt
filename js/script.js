@@ -285,28 +285,49 @@ const initAdvantagesAnimation = () => {
 const initPlaneAnimation = () => {
     const planeSection = document.querySelector('.referral');
 
-    if (!planeSection || !gsap || MAX_MEDIA_1200) return;
+    if (!planeSection || !gsap) return;
 
+    let tl;
     const plane = planeSection.querySelector('.referral__plane');
 
-    gsap.registerPlugin(ScrollTrigger);
+    initAnimation();
+    window.addEventListener('resize', handleAnimation);
 
-    const tl = gsap.timeline({
-        defaults: {
-            duration: 4,
-            ease: "none",
-        },
-        scrollTrigger: {
-            trigger: planeSection,
-            start: "top 80%",
-            end: `bottom top`,
-            scrub: true,
-            invalidateOnRefresh: true
+    function initAnimation() {
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        tl = gsap.timeline({
+            defaults: {
+                duration: 4,
+                ease: "none",
+            },
+            scrollTrigger: {
+                trigger: planeSection,
+                start: "top 80%",
+                end: `bottom top`,
+                scrub: true,
+                invalidateOnRefresh: true
+            }
+        });
+
+        tl
+            .fromTo(plane, { yPercent: -120 }, { yPercent: 120 })
+    }
+
+    function handleAnimation() {
+        MAX_MEDIA_1200 = window.matchMedia('(max-width: 1200px)').matches;
+
+        if (MAX_MEDIA_1200) {
+            if (!tl?.scrollTrigger) return;
+
+            tl.progress(0);
+            tl.kill();
+            gsap.set(plane, { clearProps: 'all' })
+        } else if (!tl?.scrollTrigger) {
+            initAnimation();
         }
-    });
-
-    tl
-        .fromTo(plane, { yPercent: -120 }, { yPercent: 120 })
+    }
 }
 
 const initPopups = () => {
