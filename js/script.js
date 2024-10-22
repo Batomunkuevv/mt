@@ -1,7 +1,6 @@
 "use strict";
 
 let MAX_MEDIA_1200 = window.matchMedia('(max-width: 1200px)').matches;
-const IS_OPERA = (navigator.userAgent.match(/Opera|OPR\//) ? true : false);
 
 const initLozad = () => {
     const lozadElements = document.querySelectorAll('[data-lozad]');
@@ -50,20 +49,20 @@ const initHeader = () => {
 
     if (!header) return;
 
-
     let lastScrollTop;
+    let headerHeight = header.scrollHeight;
 
     window.addEventListener('scroll', toggleScrollingClass);
-
-    if (!IS_OPERA) window.addEventListener('scroll', animateHeader);
+    window.addEventListener('scroll', animateHeader);
+    window.addEventListener('resize', handleHeaderHeight);
 
     function animateHeader() {
         const scrollTop = document.documentElement.scrollTop;
 
         if (scrollTop > lastScrollTop && scrollTop > 48) {
-            header.classList.add('is-scrolling-down');
+            header.style.top = `-${headerHeight}px`;
         } else {
-            header.classList.remove('is-scrolling-down');
+            header.style.top = '';
         }
 
         lastScrollTop = scrollTop;
@@ -77,6 +76,10 @@ const initHeader = () => {
         } else {
             header.classList.remove('is-scrolling');
         }
+    }
+
+    function handleHeaderHeight() {
+        headerHeight = header.scrollHeight;
     }
 }
 
