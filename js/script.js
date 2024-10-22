@@ -37,6 +37,11 @@ const initCases = () => {
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true
+            },
+            breakpoints: {
+                1200: {
+                    slidesPerView: 3
+                }
             }
         };
 
