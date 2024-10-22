@@ -35,7 +35,7 @@ export default   [
         isRussian: true,
     },
     {
-        name:'Тайланд',
+        name:'Таиланд',
         id: 7,
         isRussian: false,
     },
