@@ -1,6 +1,6 @@
 "use strict";
 
-const MAX_MEDIA_1200 = window.matchMedia('(max-width: 1200px)').matches;
+let MAX_MEDIA_1200 = window.matchMedia('(max-width: 1200px)').matches;
 
 const initLozad = () => {
     const lozadElements = document.querySelectorAll('[data-lozad]');
@@ -197,58 +197,89 @@ const initAnchors = () => {
 const initAdvantagesAnimation = () => {
     const advantagesSection = document.querySelector('.advantages');
 
-    if (!advantagesSection || MAX_MEDIA_1200) return;
+    if (!advantagesSection) return;
 
-    gsap.registerPlugin(ScrollTrigger);
-
+    let tl;
     const advantages = advantagesSection.querySelectorAll('.advantages__item');
 
-    advantagesSection.style.paddingBottom = `${(advantages.length - 1) * 32}px`;
+    initAnimation();
+    window.addEventListener('resize', handleAnimation);
 
-    const tl = gsap.timeline({
-        defaults: {
-            ease: "none",
-        },
-        scrollTrigger: {
-            trigger: advantagesSection,
-            start: "top top",
-            end: `+=${advantages.length - 1}000`,
-            scrub: 1,
-            pin: true,
-            invalidateOnRefresh: true
-        }
-    });
+    function initAnimation() {
+        if (MAX_MEDIA_1200) return;
 
-    advantages.forEach((advantage, i) => {
-        const advantageItems = advantage.querySelectorAll('*');
+        gsap.registerPlugin(ScrollTrigger);
 
-        if (i !== 0) {
-            gsap.set(advantage, { top: `calc(${100 * i}% + ${i * 32}px)` })
-            tl.to(advantage, { top: i * 32 })
+        advantagesSection.style.paddingBottom = `${(advantages.length - 1) * 32}px`;
 
-            advantages.forEach((advantage, j) => {
-                if (j > i) {
-                    tl.to(advantage, { top: `calc(${100 * (j - i)}% + ${j * 32}px)` }, '<')
-                }
-            })
-
-            tl.to(advantage, { background: '#15286d', duration: 0.5 }, '>')
-
-            if (i & 2 !== 0) {
-                tl.to(advantages[i - 1], { background: '#979797', duration: 0.5 }, '<')
-            } else {
-                tl.to(advantages[i - 1], { background: '#F4F4F4', duration: 0.5 }, '<')
+        tl = gsap.timeline({
+            defaults: {
+                ease: "none",
+            },
+            scrollTrigger: {
+                trigger: advantagesSection,
+                start: "top top",
+                end: `+=${advantages.length - 1}000`,
+                scrub: 1,
+                pin: true,
+                invalidateOnRefresh: true
             }
+        });
 
-            tl.to(advantageItems, { color: '#fff' }, '<')
-        } else {
-            tl
-                .to(advantage, { background: '#15286d', duration: 0.5 })
-                .to(advantages[i - 1], { background: '#979797', duration: 0.5 }, '<')
-                .to(advantageItems, { color: '#fff', duration: 0.5 }, '<')
-                .to({}, 0.1, {}, '<')
+        advantages.forEach((advantage, i) => {
+            const advantageItems = advantage.querySelectorAll('*');
+
+            if (i !== 0) {
+                gsap.set(advantage, { top: `calc(${100 * i}% + ${i * 32}px)` })
+                tl.to(advantage, { top: i * 32 })
+
+                advantages.forEach((advantage, j) => {
+                    if (j > i) {
+                        tl.to(advantage, { top: `calc(${100 * (j - i)}% + ${j * 32}px)` }, '<')
+                    }
+                })
+
+                tl.to(advantage, { background: '#15286d', duration: 0.5 }, '>')
+
+                if (i & 2 !== 0) {
+                    tl.to(advantages[i - 1], { background: '#979797', duration: 0.5 }, '<')
+                } else {
+                    tl.to(advantages[i - 1], { background: '#F4F4F4', duration: 0.5 }, '<')
+                }
+
+                tl.to(advantageItems, { color: '#fff' }, '<')
+            } else {
+                tl
+                    .to(advantage, { background: '#15286d', duration: 0.5 })
+                    .to(advantages[i - 1], { background: '#979797', duration: 0.5 }, '<')
+                    .to(advantageItems, { color: '#fff', duration: 0.5 }, '<')
+                    .to({}, 0.1, {}, '<')
+            }
+        })
+    }
+
+    function handleAnimation() {
+        MAX_MEDIA_1200 = window.matchMedia('(max-width: 1200px)').matches;
+
+        if (MAX_MEDIA_1200) {
+            if (!tl?.scrollTrigger) return;
+
+            const advantagesSectionPin = advantagesSection.closest('.pin-spacer');
+
+            tl.progress(0);
+            tl.kill();
+            gsap.set(advantagesSection, { clearProps: 'all' })
+            advantages.forEach(advantage => {
+                const advantageItems = advantage.querySelectorAll('*');
+
+                gsap.set([advantage, [...advantageItems]], { clearProps: 'all' })
+            });
+            advantagesSectionPin.insertAdjacentElement('beforebegin', advantagesSection);
+            advantagesSectionPin.remove();
+        } else if (!tl.scrollTrigger) {
+            initAnimation();
         }
-    })
+    }
 }
 
 const initPlaneAnimation = () => {
@@ -267,7 +298,7 @@ const initPlaneAnimation = () => {
         },
         scrollTrigger: {
             trigger: planeSection,
-            start: "top 60%",
+            start: "top 80%",
             end: `bottom top`,
             scrub: true,
             invalidateOnRefresh: true
@@ -362,7 +393,10 @@ const initClientsSlider = () => {
 }
 
 const initAdvantagesSlider = () => {
+    let advantagesSwiper;
     const advantagesBody = document.querySelector('.advantages__body');
+
+    window.addEventListener('resize', handleSlider);
 
     if (!advantagesBody || !MAX_MEDIA_1200) return;
 
@@ -381,7 +415,15 @@ const initAdvantagesSlider = () => {
         }
     }
 
-    const advantagesBodySwiper = new Swiper(advantagesBody, options);
+    advantagesSwiper = new Swiper(advantagesBody, options);
+
+    function handleSlider() {
+        MAX_MEDIA_1200 = window.matchMedia('(max-width: 1200px)').matches;
+
+        if (MAX_MEDIA_1200 && !advantagesSwiper) {
+            initAdvantagesSlider();
+        }
+    }
 }
 
 const initRunningLines = () => {
