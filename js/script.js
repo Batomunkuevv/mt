@@ -294,6 +294,7 @@ const initPlaneAnimation = () => {
     window.addEventListener('resize', handleAnimation);
 
     function initAnimation() {
+        if (MAX_MEDIA_1200) return;
 
         gsap.registerPlugin(ScrollTrigger);
 
