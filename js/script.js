@@ -228,7 +228,7 @@ const initAdvantagesAnimation = () => {
             },
             scrollTrigger: {
                 trigger: advantagesSection,
-                start: "top top",
+                start: "top -10%",
                 end: `+=${advantages.length - 1}000`,
                 scrub: 1,
                 pin: true,
